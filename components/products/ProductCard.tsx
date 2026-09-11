@@ -1,0 +1,4 @@
+import Image from "next/image";
+import type { Product } from "@/types/product";
+import { formatInr } from "@/lib/utils";
+export function ProductCard({product}:{product:Product}){return <article className="flex min-h-[64px] items-center gap-3 rounded-[7px] border border-[#ededed] bg-white p-2.5 shadow-[0_1px_5px_rgba(0,0,0,.04)] transition hover:-translate-y-0.5 hover:shadow-[0_4px_12px_rgba(0,0,0,.08)]"><div className="relative h-[48px] w-[58px] shrink-0 overflow-hidden rounded-[5px] bg-[#f3f3f3]"><Image src={product.image??"/images/product-placeholder.svg"} alt="" fill className="object-contain p-1" sizes="58px"/></div><div className="min-w-0"><h3 className="truncate text-[11px] font-semibold">{product.name}</h3><p className="mt-0.5 text-[10px] text-[#222]">{formatInr(product.priceInr)}</p><span className="mt-1 inline-flex rounded-[4px] bg-[#eaf6ff] px-2 py-0.5 text-[9px] font-medium text-[#168fd5]">{product.brand}</span></div></article>}

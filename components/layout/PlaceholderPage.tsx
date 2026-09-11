@@ -1,0 +1,2 @@
+import { AppLayout } from "@/components/layout/AppLayout";
+export function PlaceholderPage({title}:{title:string}){return <AppLayout><div className="mx-auto max-w-[1180px] p-6 sm:p-8"><h1 className="text-lg font-bold">{title}</h1><div className="mt-8 rounded-[10px] border border-[#ededed] bg-[#fafafa] p-14 text-center"><p className="font-semibold">Coming soon</p><p className="mt-1 text-xs text-[#999]">This section is outside the functional scope of the assignment.</p></div></div></AppLayout>}

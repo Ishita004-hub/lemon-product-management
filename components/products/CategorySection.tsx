@@ -1,0 +1,3 @@
+import type { Category, Product } from "@/types/product";
+import { ProductCard } from "@/components/products/ProductCard";
+export function CategorySection({category,products}:{category:Category;products:Product[]}){return <section className="min-h-[360px] rounded-[7px] bg-[#f8f8f8] p-3"><h2 className="mb-3 text-[11px] font-semibold">{category.name}</h2>{products.length?<div className="grid gap-2">{products.map(p=><ProductCard key={p.id} product={p}/>)}</div>:<div className="flex min-h-[280px] items-center justify-center text-center text-[10px] text-[#999]"><p>No products in this category.</p></div>}</section>}

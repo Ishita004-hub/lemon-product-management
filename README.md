@@ -1,36 +1,95 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Lemon Inc. Product Management
 
-## Getting Started
+A polished product-management dashboard built as a frontend engineering assessment. The implementation follows the supplied Figma reference and the assignment requirements, with responsive navigation, category management, a validated multi-step product flow, and client-side persistence.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- Responsive desktop sidebar and mobile navigation drawer
+- Products dashboard grouped by category
+- Add Category modal with duplicate/empty validation
+- Add Product flow: Description → Variants → Combinations → Price Info
+- React Hook Form + Zod validation
+- Dynamic variant combinations generated from option values
+- Duplicate SKU validation
+- Product/category persistence with Zustand + localStorage
+- Image upload preview (client-side, 2 MB limit)
+- Keyboard-accessible modal/drawer interactions and visible focus states
+- Placeholder routes for non-functional navigation items
+
+## Tech Stack
+
+- Next.js App Router
+- React + TypeScript
+- Tailwind CSS
+- React Hook Form
+- Zod
+- Zustand
+- Lucide React
+
+## Project Structure
+
+```text
+app/                 Routes and global styles
+components/          Layout, UI, products and product-form components
+data/                Seed categories/products
+lib/                 Validation, combination generation and utilities
+store/               Zustand application state
+types/               Shared TypeScript models
+public/images/       Local demo product artwork
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Setup
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```bash
+npm install
+npm run dev
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+Open `http://localhost:3000`.
 
-## Learn More
+## Environment Variables
 
-To learn more about Next.js, take a look at the following resources:
+None required.
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+## Build
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+```bash
+npm run build
+```
 
-## Deploy on Vercel
+## Run Production
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+```bash
+npm start
+```
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Design Decisions
+
+- UI state stays local; product/category data is global because it is shared between routes.
+- React Hook Form owns the entire product form, with `shouldUnregister: false`, so changing steps never discards values.
+- Zod provides field and full-form validation.
+- Zustand persistence keeps created categories and products after a browser refresh without introducing an unnecessary backend.
+- Variant combinations are generated as a Cartesian product and preserve previously entered combination data by combination name.
+- Only interactive requirements are implemented; other sidebar routes use an explicit “Coming soon” state instead of dead links.
+
+## Future Improvements
+
+- Replace localStorage persistence with a REST/GraphQL API.
+- Upload product images to object storage instead of encoding them in the browser.
+- Add product edit/delete flows and server-side validation.
+- Add automated unit, component and end-to-end tests.
+
+## GitHub Publishing
+
+```bash
+git init
+git add .
+git commit -m "feat: build product management application"
+git branch -M main
+git remote add origin <YOUR_GITHUB_REPOSITORY>
+git push -u origin main
+```
+
+## Deployment
+
+This project is ready for deployment on Vercel or another Next.js-compatible platform. No environment variables are required. A live URL is intentionally not claimed because deployment has not been performed from this environment.
