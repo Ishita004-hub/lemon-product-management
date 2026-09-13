@@ -5,9 +5,7 @@ import { usePathname } from "next/navigation";
 
 import { ChevronRight, Circle } from "lucide-react";
 
-import type { NavigationItem } from "@/types/navigation";
-
-const items: NavigationItem[] = [
+const items = [
   {
     label: "Home",
     href: "/placeholder/home",
@@ -77,30 +75,26 @@ export function Sidebar({
               key={item.label}
               href={item.href}
               onClick={onNavigate}
-              className={`mb-1 flex h-8 items-center rounded-[6px] px-3 text-[11px] transition-colors ${
+              className={`mb-3 flex h-10 items-center gap-3 rounded-[6px] px-3 text-[14px] leading-[20px] transition-colors ${
                 active
-                  ? "bg-[#e9f6ff] font-medium text-[#168fd5]"
-                  : "text-[#333] hover:bg-[#f6f6f6]"
+                  ? "bg-[#e9f6ff] font-normal text-[#168fd5]"
+                  : "text-[#000000] hover:bg-[#f6f6f6]"
               }`}
             >
-              {/* ACTIVE STATE SQUARE */}
-              <span
-                className={`mr-3 grid h-3 w-3 shrink-0 place-items-center rounded-[3px] border ${
-                  active
-                    ? "border-[#168fd5]"
-                    : "border-[#d8d8d8]"
-                }`}
-              >
+              {/* 20 × 20 RECTANGLE */}
+              <span className="grid h-[20px] w-[20px] shrink-0 place-items-center rounded-[4px] border border-[#000000] bg-[#F5F5F5]">
                 {active && (
                   <Circle
-                    size={5}
+                    size={6}
                     fill="currentColor"
                   />
                 )}
               </span>
 
               {/* MENU TEXT */}
-              <span>{item.label}</span>
+              <span className="font-normal">
+                {item.label}
+              </span>
             </Link>
           );
         })}
