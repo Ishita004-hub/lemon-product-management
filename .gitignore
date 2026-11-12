@@ -1,0 +1,20 @@
+# Dependencies
+node_modules/
+
+# Next.js
+.next/
+out/
+
+# Environment variables
+.env*
+!.env.example
+
+# Logs
+*.log
+
+# System files
+.DS_Store
+
+# Prettier configuration
+.prettierrc
+.prettierignore
